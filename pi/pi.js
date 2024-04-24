@@ -1,60 +1,117 @@
-/* Sistema de Cadastro de clientes */
-const readline = require("readline-sync");
+var readline = require("readline-sync")
 
-var op;
-var nome = "";
-var sobrenome = "";
+console.log("====================================")
+console.log("               ENTRAR               ")
+console.log("                                    ")
+console.log("                                    ")
+console.log("             *  LOGIN               ")
+console.log("                                    ")
+console.log("             *  SENHA               ")
+console.log("                                    ")
+console.log("                                    ")
+console.log("====================================")
+var loginok = "1234"
+var login
 
-do {
-  console.clear();
-  console.log("=========================================");
-  console.log("|    Sistema de Cadastro de Clientes    |");
-  console.log("=========================================");
-  console.log("|\t\t\t\t\t|");
-  console.log("|\t1. Cadastrar novo cliente\t|");
-  console.log("|\t2. Listar todos os clientes\t|");
-  console.log("|\t3. Alterar um cliente\t\t|");
-  console.log("|\t4. Remover um cliente\t\t|");
-  console.log("|\t0. Sair do sistema\t\t|");
-  console.log("|\t\t\t\t\t|");
-  console.log("|=======================================|");
+while (login != loginok) {
+  login = readline.question("Digite seu login: ");
 
-  op =readline.questionInt("Escolha uma opcao: ");
-
-  switch (op) {
-    case 1:
-      console.log("Cadastrando novo cliente...");
-      nome = readline.question("Nome: ");
-      sobrenome = readline.question("Sobrenome: ");
-      console.log(`Cliente ${nome} ${sobrenome} cadastrado com sucesso!`);
-      readline.question("Pressione ENTER para continuar...");
+  if (login == loginok) {
+      console.log("login correto.")
       break;
-    case 2:
-      console.log("Listando todos os clientes...");
-      console.log(`${nome} ${sobrenome}`);
-      readline.question("Pressione ENTER para continuar...");
-      break;
-    case 3:
-      console.log("Alterando um cliente...");
-      nome = readline.question("Nome: ");
-      sobrenome = readline.question("Sobrenome: ");
-      console.log(`Cliente atualizado com sucesso!`);
-      readline.question("Pressione ENTER para continuar...");
-      break;
-    case 4:
-      console.log("Digite o nome do cliente que deseja remover:");
-      var clienteRemovido = readline.question("Nome: ");
-      nome = "";
-      sobrenome = "";
-      console.log(`Cliente ${nome} ${sobrenome} removido com sucesso!`);
-      readline.question("Pressione ENTER para continuar...");
-      break;
-    case 0:
-      console.log("Saindo do sistema...");
-      readline.question("Pressione ENTER para continuar...");
-      break;
-    default:
-      console.log("Opção inválida.");
-      readline.question("Pressione ENTER para continuar...");
+  } else {
+    console.log("Tente novamente.");
   }
-} while (op !== 0);
+}
+
+
+var senhaok = "1234"
+var senha
+
+while (senha != senhaok) {
+  senha = readline.question("Digite sua senha: ");
+
+  if (senha == senhaok) {
+      console.log("Senha correta.")
+      break;
+  } else {
+    console.log("Tente novamente.");
+  }
+}
+
+
+console.log("====================================")
+console.log("               INICIO               ")
+console.log("                                    ")
+console.log("                                    ")
+console.log(" 1- PRODUTO                         ")
+console.log(" 2- PDV                             ")
+console.log(" 3- CLIENTE                         ")
+console.log(" 0- SAIR                            ")
+console.log("                                    ")
+console.log("====================================")
+
+var escolha
+var escolha ok
+
+while (escolhaok != escolha) {}
+var escolha = readline.questionInt("Digite a opção! ")
+switch(escolha){
+    case 1:
+        console.log("====================================")
+        console.log("              PRODUTO               ")
+        console.log("                                    ")
+        console.log(" 1- CADASTRAR                       ")
+        console.log(" 2- ALTERAR                         ")
+        console.log(" 3- EXCLUIR                         ")
+        console.log(" 4- ESTOQUE                         ")
+        console.log(" 0- INICIO                          ")
+        console.log("                                    ")
+        console.log("====================================")
+        var produtoEscolha = readline.questionInt("Digite o número da opção desejada: ")
+        switch (produtoEscolha) {
+            case 1:
+                var produtoCadastro = readline.question("Digite o nome do novo produto: ");
+                console.log("Seu novo produto foi cadastrado com sucesso!");
+            
+        }
+        break
+        case 2:
+            console.log("====================================")
+            console.log("                PDV                 ")
+            console.log("                                    ")
+            console.log("                                    ")
+            console.log(" 1- PEDIDOS                         ")
+            console.log(" 2- HISTORICO                       ")
+            console.log(" 3- FORMA PAGAMENTO                 ")
+            console.log(" 0- INICIO                          ")
+            console.log("                                    ")
+            console.log("====================================")   
+            break
+            
+            case 3:
+                console.log("====================================")
+                console.log("              CLIENTE               ")
+                console.log("                                    ")
+                console.log("                                    ")
+                console.log(" 1- NOVO                            ")
+                console.log(" 2- ALTERAR                         ")
+                console.log(" 3- EXCLUIR                         ")
+                console.log(" 0- INICIO                          ")
+                console.log("                                    ")
+                console.log("====================================")
+                break
+                case 0:
+                    console.log("====================================")
+                    console.log("               ENTRAR               ")
+                    console.log("                                    ")
+                    console.log("                                    ")
+                    console.log("             *  LOGIN               ")
+                    console.log("                                    ")
+                    console.log("             *  SENHA               ")
+                    console.log("                                    ")
+                    console.log("                                    ")
+                    console.log("====================================")
+                   break
+                   default:
+                    console.log("Opção inválida")
