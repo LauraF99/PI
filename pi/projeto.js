@@ -378,7 +378,7 @@ do {
 
                     case 3:
                         console.log("====================================")
-                        console.log("               EXCLUIR              ")
+                        console.log("               EXCLUIR               ")
                         console.log("==================================== \n")
                         console.log("     NÃO HÁ CLIENTES PARA EXCLUIR \n")
                         console.log("====================================\n")
