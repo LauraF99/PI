@@ -157,14 +157,39 @@ do {
 
                 switch (escolhaPDV) {
                     case 1:
-                    console.log("====================================")
-                    console.log("              PEDIDOS              ")
-                    console.log("==================================== \n")
-                    console.log("      NÃO HÁ PEDIDOS REGISTRADOS \n ")
-                    console.log("====================================\n")
-                    readline.question("pressione pra continuar...")
-                    console.clear();
-                    break;
+                        console.log("====================================")
+                        console.log("              PEDIDOS              ")
+                        console.log("==================================== \n")
+                        const pedidoCliente = readline.question("Nome do cliente: ");
+                        const idProduto = readline.questionInt("ID do produto: ");
+                        const tamanhoProduto = readline.questionInt("Tamanho do produto: ");
+                        const quantidadeProduto = readline.questionInt("Quantidade do produto: ");
+                        const valorProduto = readline.questionFloat("Preço do produto: R$");
+                        console.log("====================================\n")
+                        var totalPedido = quantidadeProduto * valorProduto
+                        console.log("valor total: R$" + totalPedido)
+                        const formaPagamento = readline.question("Forma de pagamento: ")
+                        console.log("====================================")
+                        console.log("====================================")
+                        console.log("Confirme os dados do pedido:");
+                        console.log("cliente: " + pedidoCliente);
+                        console.log("ID: " + idProduto);
+                        console.log("Tamanho: " + tamanhoProduto + "cm");
+                        console.log("Quantidade: " + quantidadeProduto + "und");
+                        console.log("Valor total: R$ " + totalPedido);
+                        console.log("Forma de pagamento: " + formaPagamento + "\n");
+                        console.log("====================================")
+
+                        var confirmacaoPedido = readline.question("Os dados estão corretos? (sim ou não): ");
+                        if (confirmacaoPedido.toLowerCase() === "sim") {
+                            console.log("Novo pedido cadastrado com sucesso!\n");
+                            readline.question("pressione enter pra continuar...")
+                            console.clear();
+                        } else {
+                            console.log("Os dados não foram confirmados. Volte ao menu CLIENTE para fazer alterações.\n");
+                        }
+                        console.clear();
+                        break;
                         
                     case 2:
                     console.log("====================================")
