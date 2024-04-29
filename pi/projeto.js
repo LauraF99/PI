@@ -95,27 +95,27 @@ do {
                         readline.question("pressione pra continuar...")
                         console.clear();
                         break;
-                        
+
                     case 2:
 
-                    console.log("====================================")
-                    console.log("           ALTERAR PRODUTO          ")
-                    console.log("====================================")
-                    console.log("     NÃO HÁ PRODUTOS PARA ALTERAR \n")
-                    console.log("====================================\n")
-                    readline.question("pressione pra continuar...")
-                    console.clear();
-                    break;
-                    
+                        console.log("====================================")
+                        console.log("           ALTERAR PRODUTO          ")
+                        console.log("====================================")
+                        console.log("     NÃO HÁ PRODUTOS PARA ALTERAR \n")
+                        console.log("====================================\n")
+                        readline.question("pressione pra continuar...")
+                        console.clear();
+                        break;
+
                     case 3:
 
-                    console.log("====================================")
-                    console.log("           EXCLUIR PRODUTO          ")
-                    console.log("====================================")
-                    console.log("     NÃO HÁ PRODUTOS PARA EXCLUIR \n")
-                    console.log("====================================\n")
-                    readline.question("pressione pra continuar...")
-                    console.clear();
+                        console.log("====================================")
+                        console.log("           EXCLUIR PRODUTO          ")
+                        console.log("====================================")
+                        console.log("     NÃO HÁ PRODUTOS PARA EXCLUIR \n")
+                        console.log("====================================\n")
+                        readline.question("pressione pra continuar...")
+                        console.clear();
                         break;
 
                     case 4:
@@ -190,60 +190,56 @@ do {
                         }
                         console.clear();
                         break;
-                        
+
                     case 2:
-                    console.log("====================================")
-                    console.log("              HISTÓRICO             ")
-                    console.log("==================================== \n")
-                    console.log("     NÃO HÁ HISTÓRICO DE PEDIDOS \n ")
-                    console.log("====================================\n")
-                    readline.question("pressione pra continuar...")
-                    console.clear();
+                        console.log("====================================")
+                        console.log("              HISTÓRICO             ")
+                        console.log("==================================== \n")
+                        console.log("     NÃO HÁ HISTÓRICO DE PEDIDOS \n ")
+                        console.log("====================================\n")
+                        readline.question("pressione pra continuar...")
+                        console.clear();
                         break;
 
                     case 3:
-                        var escolhaPagamento
-                        do {
-                    console.log("====================================")
-                    console.log("              PAGAMENTO             ")
-                    console.log("==================================== \n")
-                    console.log("          1 - NOVO                  ")
-                    console.log("          2 - ALTERAR               ")
-                    console.log("          3 - EXCLUIR               ")
-                    console.log("          0 - RETORNAR              ")
-                    console.log("====================================\n")
-                    escolhaPagamento = readline.questionInt("Digite a opção desejada: ");
-                    console.clear();
-                      
-                    switch (escolhaPagamento) {
-                        case 1:
-                            console.log("Adicionar nova forma de pagamento \n");
-                            readline.question("pressione pra continuar...")
+                        while (true) {
+                            console.log("====================================")
+                            console.log("              PAGAMENTO             ")
+                            console.log("==================================== \n")
+                            console.log("          1 - NOVO                  ")
+                            console.log("          2 - ALTERAR               ")
+                            console.log("          3 - EXCLUIR               ")
+                            console.log("          0 - RETORNAR              ")
+                            console.log("====================================\n")
+                            escolhaPagamento = readline.questionInt("Digite a opção desejada: ");
                             console.clear();
-                            break;
-                        case 2:
-                            console.log("Alterar forma de pagamento \n");
-                            readline.question("pressione pra continuar...")
-                            console.clear();
-                            break;
-                        case 3:
-                            console.log("Excluir forma de pagamento \n");
-                            readline.question("pressione pra continuar...")
-                            console.clear();
-                            break;
-                        case 0:
-                            console.log("Retornando a PDV...\n");
-                            break;
-                        default:
-                            console.log("Opção inválida. Por favor, digite uma opção válida.");
+
+                            switch (escolhaPagamento) {
+                                case 1:
+                                    console.log("Adicionar nova forma de pagamento \n");
+                                    readline.question("pressione pra continuar...")
+                                    console.clear();
+                                    break;
+                                case 2:
+                                    console.log("Alterar forma de pagamento \n");
+                                    readline.question("pressione pra continuar...")
+                                    console.clear();
+                                    break;
+                                case 3:
+                                    console.log("Excluir forma de pagamento \n");
+                                    readline.question("pressione pra continuar...")
+                                    console.clear();
+                                    break;
+                                case 0:
+                                    console.log("Retornando a Pagamento...\n");
+                                    process.exit()
+                                    break;
+                                default:
+                                    console.log("Opção inválida. Por favor, digite uma opção válida.");
+                                    break;
+                            }
                             break;
                         }
-                        
-    
-                        break;
-                    } while (escolhaPagamento !== 0);
-                    break;
-
                     case 0:
                         console.log("Retornando a PDV...");
                         break;
@@ -268,7 +264,7 @@ do {
                 console.log("====================================\n")
                 escolhaCliente = readline.questionInt("Digite a opção desejada: ");
                 console.clear();
-                
+
 
                 switch (escolhaCliente) {
                     case 1:
@@ -355,7 +351,7 @@ do {
                                     // Código para realizar a alteração no cliente
                                     // ...
                                     console.log("====================================")
-                                    console.log(    "Confirme os dados alterados:    ");
+                                    console.log("Confirme os dados alterados:    ");
                                     // Exibir dados alterados (dá pra grifar o que foi alterado????)
                                     console.log("1 - Nome: Marcelo");
                                     console.log("2 - Sobrenome: Cavalcanti");
