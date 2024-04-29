@@ -5,7 +5,7 @@ var login
 
 var senhaok = "1234"
 var senha
-
+do {
 console.log("====================================")
 console.log("               ENTRAR               ")
 console.log("====================================")
@@ -17,7 +17,11 @@ console.log("                                    ")
 console.log("====================================\n")
 console.clear();
 
-while (login != loginok) {
+}while (senha !== senhaok && login !== loginok);
+
+
+//Colocar login e senha no mesmo while
+/*while (login != loginok) {
 
 
     if (login == loginok) {
@@ -25,6 +29,8 @@ while (login != loginok) {
         break;
     } else {
         console.log("Tente novamente.");
+        break;
+
     }
 }
 
@@ -36,8 +42,9 @@ while (senha != senhaok) {
         break;
     } else {
         console.log("Tente novamente.");
+        break;
     }
-}
+} */
 
 var escolha;
 
@@ -239,12 +246,12 @@ do {
                                     break;
                             }
 
-                            break;
+                           
                         } while (escolhaPagamento !== 0);
                         break;
 
                     case 0:
-                        console.log("Retornando a PDV...");
+                        console.log("Retornando a MENU...");
                         break;
                     default:
                         console.log("Opção inválida. Por favor, digite uma opção válida.");
