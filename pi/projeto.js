@@ -197,12 +197,13 @@ do {
                         console.log("==================================== \n")
                         console.log("     NÃO HÁ HISTÓRICO DE PEDIDOS \n ")
                         console.log("====================================\n")
-                        readline.question("pressione pra continuar...")
+                        readline.question("pressione enter pra continuar...")
                         console.clear();
                         break;
 
                     case 3:
-                        while (true) {
+                        var escolhaPagamento
+                        do {
                             console.log("====================================")
                             console.log("              PAGAMENTO             ")
                             console.log("==================================== \n")
@@ -217,29 +218,31 @@ do {
                             switch (escolhaPagamento) {
                                 case 1:
                                     console.log("Adicionar nova forma de pagamento \n");
-                                    readline.question("pressione pra continuar...")
+                                    readline.question("pressione enter pra continuar...")
                                     console.clear();
                                     break;
                                 case 2:
                                     console.log("Alterar forma de pagamento \n");
-                                    readline.question("pressione pra continuar...")
+                                    readline.question("pressione enter pra continuar...")
                                     console.clear();
                                     break;
                                 case 3:
                                     console.log("Excluir forma de pagamento \n");
-                                    readline.question("pressione pra continuar...")
+                                    readline.question("pressione enter pra continuar...")
                                     console.clear();
                                     break;
                                 case 0:
-                                    console.log("Retornando a Pagamento...\n");
-                                    process.exit()
+                                    console.log("Retornando a PDV...\n");
                                     break;
                                 default:
                                     console.log("Opção inválida. Por favor, digite uma opção válida.");
                                     break;
                             }
+
                             break;
-                        }
+                        } while (escolhaPagamento !== 0);
+                        break;
+
                     case 0:
                         console.log("Retornando a PDV...");
                         break;
@@ -249,7 +252,7 @@ do {
                 }
             } while (escolhaPDV !== 0);
             break;
-
+            
         case 3:
             var escolhaCliente;
             do {
