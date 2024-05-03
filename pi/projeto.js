@@ -1,11 +1,12 @@
-var readline = require("readline-sync")
+let readline = require("readline-sync")
 
-var loginok = "1234"
-var login
+let loginok = "admin"
+let login
 
-var senhaok = "1234"
-var senha
-do {
+let senhaok = "1234"
+let senha
+
+function entrada () {
 console.log("====================================")
 console.log("               ENTRAR               ")
 console.log("====================================")
@@ -15,39 +16,15 @@ senha = readline.question("      Senha:          ");
 console.log("                                    ")
 console.log("                                    ")
 console.log("====================================\n")
-console.clear();
+console.clear(); }
 
-}while (senha !== senhaok && login !== loginok);
-
-
-//Colocar login e senha no mesmo while
-/*while (login != loginok) {
+do {
+    entrada ();
+} while (senha !== senhaok && login !== loginok);
 
 
-    if (login == loginok) {
-        console.log("login correto.")
-        break;
-    } else {
-        console.log("Tente novamente.");
-        break;
-
-    }
-}
-
-
-while (senha != senhaok) {
-
-    if (senha == senhaok) {
-        console.log("Senha correta.")
-        break;
-    } else {
-        console.log("Tente novamente.");
-        break;
-    }
-} */
-
-var escolha;
-
+let escolha;
+//function telaMenu() {
 do {
     console.log("====================================")
     console.log("                MENU                ")
@@ -62,7 +39,7 @@ do {
 
 
     switch (escolha) {
-        case 1:
+        case 1: // tela produto ()
             var escolhaProduto;
             do {
                 console.log("====================================")
