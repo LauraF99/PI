@@ -24,6 +24,7 @@ do {
 
 
 let escolha;
+do {
 function telaMenu() {
 
     console.log("====================================")
@@ -38,7 +39,7 @@ function telaMenu() {
     console.clear(); }
 
     switch (escolha) {
-        case 1: tela produto ()
+        case 1: //tela produto ()
             let escolhaProduto;
             do {
                 console.log("====================================")
