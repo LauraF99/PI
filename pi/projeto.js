@@ -20,12 +20,12 @@ console.clear(); }
 
 do {
     entrada ();
-} while (senha !== senhaok && login !== loginok);
+} while (senha !== senhaok || login !== loginok);
 
 
 let escolha;
-//function telaMenu() {
-do {
+function telaMenu() {
+
     console.log("====================================")
     console.log("                MENU                ")
     console.log("====================================")
@@ -35,12 +35,11 @@ do {
     console.log("          0 - SAIR                  ")
     console.log("====================================\n")
     escolha = readline.questionInt("Digite a opção desejada: ");
-    console.clear();
-
+    console.clear(); }
 
     switch (escolha) {
-        case 1: // tela produto ()
-            var escolhaProduto;
+        case 1: tela produto ()
+            let escolhaProduto;
             do {
                 console.log("====================================")
                 console.log("              PRODUTO               ")
@@ -118,25 +117,16 @@ do {
                         break;
                     default:
                         console.log("Opção inválida. Por favor, digite uma opção válida.");
+                        me
                         break;
+
                 }
             } while (escolhaProduto !== 0);
             break;
 
-        case 2:
+        case 2: telaPdv ()
             var escolhaPDV;
             do {
-
-                console.log("====================================")
-                console.log("                PDV                 ")
-                console.log("====================================")
-                console.log("          1 - PEDIDOS               ")
-                console.log("          2 - HISTÓRICO             ")
-                console.log("          3 - PAGAMENTO             ")
-                console.log("          0 - INÍCIO                ")
-                console.log("====================================\n")
-                escolhaPDV = readline.questionInt("Digite a opção desejada:");
-                console.clear()
 
 
                 switch (escolhaPDV) {
@@ -237,7 +227,7 @@ do {
             } while (escolhaPDV !== 0);
             break;
             
-        case 3:
+        case 3: telaCliente ()
             var escolhaCliente;
             do {
 
