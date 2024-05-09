@@ -26,7 +26,8 @@ let escolha
 let escolhaProduto
 let escolhaPDV
 let escolhaCliente
-let alteração
+let altera
+
 
 function telaMenu() {
 
@@ -137,29 +138,29 @@ function alteraProduto() {
     console.log("      3 - Valor: 130,00             ")
     console.log("      0 - Voltar                    \n")
     console.log("====================================\n")
-    alteração = readline.question("Escolha uma opção: ")
+    altera = readline.question("Escolha uma opção: ")
     console.clear();
  
 
-        switch(alteração){
+        switch(altera) {
             case 1:
-                readline.question("Informe o novo nome do protudo: ")
-                readline.question("Nome alterado com sucesso! Pressione para continuar")
-            break;
+                readline.question("Informe o novo nome do protudo: ");
+                readline.question("Nome alterado com sucesso! Pressione para continuar");
+                break;
             case 2:
-                readline.questionInt("Informe a quantidade disponível em estoque: ")
-                readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar")
-            break;
+                readline.questionInt("Informe a quantidade disponível em estoque: ");
+                readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar");
+                break;
             case 3:
-                readline.questionFloat("Informe o novo preço do produto: ")
-                readline.question("Preço alterado com sucesso! Pressione ENTER para continuar")
-            break;
+                readline.questionFloat("Informe o novo preço do produto: ");
+                readline.question("Preço alterado com sucesso! Pressione ENTER para continuar");
+                break;
             case 0:
                 alteraProduto ();
-            break;
+                break;
             default:
                 readline.question("Opção inválida! Precione ENTER para continuar")
-            break
+                break
         } 
         console.clear()
     
