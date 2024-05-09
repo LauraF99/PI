@@ -23,6 +23,11 @@ do {
 } while (senha !== senhaok || login !== loginok);
 
 let escolha
+let escolhaProduto
+let escolhaPDV
+let escolhaCliente
+let alteração
+
 function telaMenu() {
 
     console.log("====================================")
@@ -34,11 +39,35 @@ function telaMenu() {
     console.log("          0 - SAIR                  ")
     console.log("====================================\n")
     escolha = readline.questionInt("Digite a opção desejada: ");
-    console.clear(); }
-    telaMenu ();
+    console.clear();
+}
+telaMenu ();
+    
+switch (escolha) {
+    case 1:
+        telaProduto ();
+        break;
 
-let escolhaProduto
+    case 2:
+        telaPdv ();
+        break;
+
+    case 3:
+        telaCliente ();
+        break;
+
+    case 0:
+        console.log("Saindo do sistema...");
+        break;
+
+    default: 
+        console.log("Opção inválida. Por favor, digite uma opção válida.");
+        telaMenu ();
+        break;
+}        
+          
 function telaProduto() {
+   
     console.log("====================================")
     console.log("              PRODUTO               ")
     console.log("====================================")
@@ -50,57 +79,30 @@ function telaProduto() {
     console.log("====================================\n")
     escolhaProduto = readline.questionInt("Digite a opção desejada: ");
     console.clear();
-
 }
-let escolhaPDV
-function telaPdv() {
-    
-    console.log("====================================")
-    console.log("                PDV                 ")
-    console.log("====================================")
-    console.log("          1 - PEDIDOS               ")
-    console.log("          2 - HISTÓRICO             ")
-    console.log("          3 - PAGAMENTO             ")
-    console.log("          0 - INÍCIO                ")
-    console.log("====================================\n")
-    escolhaPDV = readline.questionInt("Digite a opção desejada:");
-    console.clear()
 
-}
-let escolhaCliente
-function telaCliente() {
-    
-    console.log("====================================")
-    console.log("              CLIENTE               ")
-    console.log("====================================")
-    console.log("          1 - NOVO                  ")
-    console.log("          2 - ALTERAR               ")
-    console.log("          3 - EXCLUIR               ")
-    console.log("          0 - INÍCIO                ")
-    console.log("====================================\n")
-    escolhaCliente = readline.questionInt("Digite a opção desejada: ");
-    console.clear();
-
-
-}
-switch (escolha) {
-    case 1 :
-        telaProduto ();
+switch (escolhaProduto) {
+    case 1:
+        cadastroProduto ();
         break;
-    case 2 :
-        telaPdv ();
+    case 2:
+        alteraProduto ();
         break;
     case 3:
-        telaCliente ();
-    case 0:
-        console.log("Saindo do sistema...");
+        excluiProduto ();
         break;
-
-    default: console.log("Opção inválida. Por favor, digite uma opção válida.");
+    case 4:
+        estoque ();
+        break;
+    case 0:
+        telaMenu ();
+        break;        
+    default:
+        console.log("Opção inválida. Por favor, digite uma opção válida.");
         break;
 }
 
-function novoProduto() {
+function cadastroProduto() {
 
     let novoProduto = {
         nome: "",
@@ -121,5 +123,91 @@ function novoProduto() {
 
     console.log("Novo produto cadastrado com sucesso!\n");
     readline.question("pressione pra continuar...")
-    console.clear(); }
+    console.clear();
+    telaProduto() 
+}
+
+function alteraProduto() {
+
+    console.log("====================================")
+    console.log("           ALTERAR PRODUTO          ")
+    console.log("====================================\n")
+    console.log("      1 - Astronauta                ")
+    console.log("      2 - Quantidade em estoque: 1  ")
+    console.log("      3 - Valor: 130,00             ")
+    console.log("      0 - Voltar                    \n")
+    console.log("====================================\n")
+    alteração = readline.question("Escolha uma opção: ")
+    console.clear();
+ 
+
+        switch(alteração){
+            case 1:
+                readline.question("Informe o novo nome do protudo: ")
+                readline.question("Nome alterado com sucesso! Pressione para continuar")
+            break;
+            case 2:
+                readline.questionInt("Informe a quantidade disponível em estoque: ")
+                readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar")
+            break;
+            case 3:
+                readline.questionFloat("Informe o novo preço do produto: ")
+                readline.question("Preço alterado com sucesso! Pressione ENTER para continuar")
+            break;
+            case 0:
+                alteraProduto ();
+            break;
+            default:
+                readline.question("Opção inválida! Precione ENTER para continuar")
+            break
+        } 
+        console.clear()
+    
+    }
+
+    /*console.log("====================================")
+    console.log("           ALTERAR PRODUTO          ")
+    console.log("====================================")
+    console.log("     NÃO HÁ PRODUTOS PARA ALTERAR \n")
+    console.log("====================================\n")
+    readline.question("pressione pra continuar...")
+    console.clear();
+    telaProduto ();*/
+
+
+
+function telaPdv() {
+    
+    console.log("====================================")
+    console.log("                PDV                 ")
+    console.log("====================================")
+    console.log("          1 - PEDIDOS               ")
+    console.log("          2 - HISTÓRICO             ")
+    console.log("          3 - PAGAMENTO             ")
+    console.log("          0 - INÍCIO                ")
+    console.log("====================================\n")
+    escolhaPDV = readline.questionInt("Digite a opção desejada:");
+    console.clear()
+
+}
+
+
+function telaCliente() {
+    
+    console.log("====================================")
+    console.log("              CLIENTE               ")
+    console.log("====================================")
+    console.log("          1 - NOVO                  ")
+    console.log("          2 - ALTERAR               ")
+    console.log("          3 - EXCLUIR               ")
+    console.log("          0 - INÍCIO                ")
+    console.log("====================================\n")
+    escolhaCliente = readline.questionInt("Digite a opção desejada: ");
+    console.clear();
+
+
+}
+
+
+    
    
