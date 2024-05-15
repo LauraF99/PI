@@ -21,16 +21,11 @@ console.clear(); }
 do {
     entrada ();
 } while (senha !== senhaok || login !== loginok);
+  
 
 let escolha
-let escolhaProduto
-let escolhaPDV
-let escolhaCliente
-let altera
-
-
 function telaMenu() {
-
+    
     console.log("====================================")
     console.log("                MENU                ")
     console.log("====================================")
@@ -43,43 +38,44 @@ function telaMenu() {
     console.clear();
 }
 telaMenu ();
-    
+
 switch (escolha) {
     case 1:
         telaProduto ();
         break;
-
+        
     case 2:
         telaPdv ();
         break;
-
+            
     case 3:
         telaCliente ();
         break;
-
+        
     case 0:
-        console.log("Saindo do sistema...");
+        console.log("Saindo do sistema... ");
         break;
-
+        
     default: 
         console.log("Opção inválida. Por favor, digite uma opção válida.");
-        telaMenu ();
         break;
-}        
-          
-function telaProduto() {
-   
-    console.log("====================================")
-    console.log("              PRODUTO               ")
-    console.log("====================================")
-    console.log("           1 - CADASTRAR            ")
-    console.log("           2 - ALTERAR              ")
-    console.log("           3 - EXCLUIR              ")
-    console.log("           4 - ESTOQUE              ")
-    console.log("           0 - INÍCIO               ")
-    console.log("====================================\n")
-    escolhaProduto = readline.questionInt("Digite a opção desejada: ");
-    console.clear();
+        telaMenu ()
+    }        
+    
+    let escolhaProduto
+    function telaProduto() {
+        
+        console.log("====================================")
+        console.log("              PRODUTO               ")
+        console.log("====================================")
+        console.log("           1 - CADASTRAR            ")
+        console.log("           2 - ALTERAR              ")
+        console.log("           3 - EXCLUIR              ")
+        console.log("           4 - ESTOQUE              ")
+        console.log("           0 - INÍCIO               ")
+        console.log("====================================\n")
+        escolhaProduto = readline.questionInt("Digite a opção desejada: ");
+        console.clear();
 }
 
 switch (escolhaProduto) {
@@ -87,31 +83,31 @@ switch (escolhaProduto) {
         cadastroProduto ();
         break;
     case 2:
-        alteraProduto ();
+            alteraProduto ();
         break;
     case 3:
-        excluiProduto ();
-        break;
-    case 4:
+            excluiProduto ();
+            break;
+        case 4:
         estoque ();
         break;
     case 0:
-        telaMenu ();
-        break;        
+            telaMenu ();
+                        break;        
     default:
         console.log("Opção inválida. Por favor, digite uma opção válida.");
         break;
-}
-
-function cadastroProduto() {
-
-    let novoProduto = {
-        nome: "",
-        categoria: "",
+            }
+            
+            function cadastroProduto() {
+                
+                let novoProduto = {
+                    nome: "",
+                    categoria: "",
         tamanho: "",
         preço: ""
     };
-
+    
     console.log("====================================")
     console.log("           NOVO PRODUTO             ")
     console.log("====================================")
@@ -121,7 +117,7 @@ function cadastroProduto() {
     novoProduto.preço = readline.question("Digite o preço do produto: ");
     console.log("====================================\n")
     console.clear();
-
+    
     console.log("Novo produto cadastrado com sucesso!\n");
     readline.question("pressione pra continuar...")
     console.clear();
@@ -129,7 +125,8 @@ function cadastroProduto() {
 }
 
 function alteraProduto() {
-
+    let altera
+    
     console.log("====================================")
     console.log("           ALTERAR PRODUTO          ")
     console.log("====================================\n")
@@ -140,30 +137,30 @@ function alteraProduto() {
     console.log("====================================\n")
     altera = readline.question("Escolha uma opção: ")
     console.clear();
- 
+    
 
-        switch(altera) {
-            case 1:
-                readline.question("Informe o novo nome do protudo: ");
+    switch(altera) {
+        case 1:
+            readline.question("Informe o novo nome do protudo: ");
                 readline.question("Nome alterado com sucesso! Pressione para continuar");
                 break;
-            case 2:
-                readline.questionInt("Informe a quantidade disponível em estoque: ");
+                case 2:
+                    readline.questionInt("Informe a quantidade disponível em estoque: ");
                 readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar");
                 break;
             case 3:
                 readline.questionFloat("Informe o novo preço do produto: ");
                 readline.question("Preço alterado com sucesso! Pressione ENTER para continuar");
                 break;
-            case 0:
-                alteraProduto ();
+                case 0:
+                    alteraProduto ();
                 break;
             default:
                 readline.question("Opção inválida! Precione ENTER para continuar")
                 break
-        } 
+            } 
         console.clear()
-    
+        
     }
 
     /*console.log("====================================")
@@ -174,11 +171,12 @@ function alteraProduto() {
     readline.question("pressione pra continuar...")
     console.clear();
     telaProduto ();*/
-
-
-
-function telaPdv() {
     
+
+    
+    function telaPdv() {
+        let escolhaPDV
+        
     console.log("====================================")
     console.log("                PDV                 ")
     console.log("====================================")
@@ -194,6 +192,7 @@ function telaPdv() {
 
 
 function telaCliente() {
+    let escolhaCliente
     
     console.log("====================================")
     console.log("              CLIENTE               ")
