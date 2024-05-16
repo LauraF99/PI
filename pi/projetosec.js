@@ -83,30 +83,30 @@ switch (escolhaProduto) {
         cadastroProduto ();
         break;
     case 2:
-            alteraProduto ();
+        alteraProduto ();
         break;
     case 3:
-            excluiProduto ();
-            break;
-        case 4:
+        excluiProduto ();
+        break;
+    case 4:
         estoque ();
         break;
     case 0:
-            telaMenu ();
-                        break;        
+        telaMenu ();
+        break;        
     default:
         console.log("Opção inválida. Por favor, digite uma opção válida.");
         break;
             }
             
-            function cadastroProduto() {
+    function cadastroProduto() {
                 
-                let novoProduto = {
-                    nome: "",
-                    categoria: "",
-        tamanho: "",
-        preço: ""
-    };
+        let novoProduto = {
+            nome: "",
+            categoria: "",
+            tamanho: "",
+            preço: "" }
+    
     
     console.log("====================================")
     console.log("           NOVO PRODUTO             ")
@@ -121,8 +121,8 @@ switch (escolhaProduto) {
     console.log("Novo produto cadastrado com sucesso!\n");
     readline.question("pressione pra continuar...")
     console.clear();
-    telaProduto() 
 }
+    telaProduto()
 
 function alteraProduto() {
     let altera
@@ -163,19 +163,11 @@ function alteraProduto() {
         
     }
 
-    /*console.log("====================================")
-    console.log("           ALTERAR PRODUTO          ")
-    console.log("====================================")
-    console.log("     NÃO HÁ PRODUTOS PARA ALTERAR \n")
-    console.log("====================================\n")
-    readline.question("pressione pra continuar...")
-    console.clear();
-    telaProduto ();*/
+    
     
 
-    
+    let escolhaPDV;
     function telaPdv() {
-        let escolhaPDV
         
     console.log("====================================")
     console.log("                PDV                 ")
@@ -191,8 +183,8 @@ function alteraProduto() {
 }
 
 
+let escolhaCliente;
 function telaCliente() {
-    let escolhaCliente
     
     console.log("====================================")
     console.log("              CLIENTE               ")
