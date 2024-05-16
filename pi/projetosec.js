@@ -9,7 +9,7 @@ let senha
 function entrada () {
 console.log("====================================")
 console.log("               ENTRAR               ")
-console.log("====================================")
+console.log("====================================\n")
 console.log("                                    ")
 login = readline.question("      Login:          ");
 senha = readline.question("      Senha:          ");
@@ -23,12 +23,12 @@ do {
 } while (senha !== senhaok || login !== loginok);
   
 
-let escolha
 function telaMenu() {
+    let escolha
     
     console.log("====================================")
     console.log("                MENU                ")
-    console.log("====================================")
+    console.log("====================================\n")
     console.log("          1 - PRODUTO               ")
     console.log("          2 - PDV                   ")
     console.log("          3 - CLIENTE               ")
@@ -36,10 +36,8 @@ function telaMenu() {
     console.log("====================================\n")
     escolha = readline.questionInt("Digite a opção desejada: ");
     console.clear();
-}
-telaMenu ();
-
-switch (escolha) {
+   
+   switch (escolha) {
     case 1:
         telaProduto ();
         break;
@@ -58,16 +56,18 @@ switch (escolha) {
         
     default: 
         console.log("Opção inválida. Por favor, digite uma opção válida.");
-        break;
         telaMenu ()
+        break;
     }        
-    
-    let escolhaProduto
+}    
+telaMenu ();
+
     function telaProduto() {
+        let escolhaProduto
         
         console.log("====================================")
         console.log("              PRODUTO               ")
-        console.log("====================================")
+        console.log("====================================\n")
         console.log("           1 - CADASTRAR            ")
         console.log("           2 - ALTERAR              ")
         console.log("           3 - EXCLUIR              ")
@@ -76,7 +76,7 @@ switch (escolha) {
         console.log("====================================\n")
         escolhaProduto = readline.questionInt("Digite a opção desejada: ");
         console.clear();
-}
+
 
 switch (escolhaProduto) {
     case 1:
@@ -96,9 +96,11 @@ switch (escolhaProduto) {
         break;        
     default:
         console.log("Opção inválida. Por favor, digite uma opção válida.");
+        telaProduto ();
         break;
             }
-            
+        }
+
     function cadastroProduto() {
                 
         let novoProduto = {
@@ -110,7 +112,7 @@ switch (escolhaProduto) {
     
     console.log("====================================")
     console.log("           NOVO PRODUTO             ")
-    console.log("====================================")
+    console.log("====================================\n")
     novoProduto.nome = readline.question("Qual o nome do produto? ");
     novoProduto.categoria = readline.question("Qual a categoria do produto? ");
     novoProduto.tamanho = readline.question("Digite o tamanho do produto: ");
@@ -119,10 +121,10 @@ switch (escolhaProduto) {
     console.clear();
     
     console.log("Novo produto cadastrado com sucesso!\n");
-    readline.question("pressione pra continuar...")
+    telaProduto ();
     console.clear();
 }
-    telaProduto()
+   
 
 function alteraProduto() {
     let altera
@@ -135,7 +137,7 @@ function alteraProduto() {
     console.log("      3 - Valor: 130,00             ")
     console.log("      0 - Voltar                    \n")
     console.log("====================================\n")
-    altera = readline.question("Escolha uma opção: ")
+    altera = readline.questionInt("Escolha uma opção: ")
     console.clear();
     
 
@@ -143,20 +145,24 @@ function alteraProduto() {
         case 1:
             readline.question("Informe o novo nome do protudo: ");
                 readline.question("Nome alterado com sucesso! Pressione para continuar");
+                alteraProduto ()
                 break;
                 case 2:
                     readline.questionInt("Informe a quantidade disponível em estoque: ");
                 readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar");
+                alteraProduto ()
                 break;
             case 3:
                 readline.questionFloat("Informe o novo preço do produto: ");
                 readline.question("Preço alterado com sucesso! Pressione ENTER para continuar");
+                alteraProduto();
                 break;
                 case 0:
                     alteraProduto ();
                 break;
             default:
                 readline.question("Opção inválida! Precione ENTER para continuar")
+                alteraProduto ();
                 break
             } 
         console.clear()
@@ -164,10 +170,8 @@ function alteraProduto() {
     }
 
     
-    
-
-    let escolhaPDV;
     function telaPdv() {
+        let escolhaPDV
         
     console.log("====================================")
     console.log("                PDV                 ")
@@ -180,11 +184,128 @@ function alteraProduto() {
     escolhaPDV = readline.questionInt("Digite a opção desejada:");
     console.clear()
 
+    switch (escolhaPDV) {
+        case 1:
+            telaPedidos ();
+            break;
+        case 2:
+            telaHistorico ();
+            break;
+        case 3:
+            telaPagamento ();
+            break;
+        case 0:
+            telaMenu ();
+            break;
+    
+        default:
+            console.log("Opção inválida. Por favor, digite uma opção válida.");
+            telaPdv ();
+            break;
+    }
+
 }
 
+function telaPedidos() {
+    
+    console.log("====================================")
+    console.log("              PEDIDOS              ")
+    console.log("==================================== \n")
+    const pedidoCliente = readline.question("Nome do cliente: ");
+    const idProduto = readline.questionInt("ID do produto: ");
+    const tamanhoProduto = readline.questionInt("Tamanho do produto: ");
+    const quantidadeProduto = readline.questionInt("Quantidade do produto: ");
+    const valorProduto = readline.questionFloat("Preço do produto: R$");
+    console.log("====================================\n")
 
-let escolhaCliente;
+    let totalPedido = quantidadeProduto * valorProduto
+    console.log("valor total: R$" + totalPedido)
+    const formaPagamento = readline.question("Qual a forma de pagamento: ")
+    console.log("====================================\n")
+
+    console.log("====================================")
+    console.log("Confirme os dados do pedido:");
+    console.log(`cliente: ${pedidoCliente}`);
+    console.log(`ID: ${idProduto}`);
+    console.log(`Tamanho: ${tamanhoProduto} cm`);
+    console.log(`Quantidade: ${quantidadeProduto} unid`);
+    console.log(`Valor total: R$ ${totalPedido}`);
+    console.log(`Forma de pagamento: ${formaPagamento}`);
+    console.log("====================================\n")
+
+    let confirmacaoPedido = readline.question("Os dados estão corretos? (sim ou não): ");
+    if (confirmacaoPedido.toLowerCase() === "sim") {
+        console.log("Novo pedido cadastrado com sucesso!\n");
+        readline.question("pressione enter pra continuar...")
+        console.clear();
+    } else {
+        console.log("Os dados não foram confirmados. Volte ao menu CLIENTE para fazer alterações.\n");
+    }
+    console.clear();
+
+}
+
+function telaHistorico() {
+    
+    console.log("====================================")
+    console.log("              HISTÓRICO             ")
+    console.log("==================================== \n")
+    console.log("     NÃO HÁ HISTÓRICO DE PEDIDOS \n ")
+    console.log("====================================\n")
+    readline.question("pressione enter pra continuar...")
+    console.clear();
+ 
+}
+
+function telaPagamento() {
+    let escolhaPagamento
+    
+    console.log("====================================")
+    console.log("              PAGAMENTO             ")
+    console.log("==================================== \n")
+    console.log("          1 - NOVO                  ")
+    console.log("          2 - ALTERAR               ")
+    console.log("          3 - EXCLUIR               ")
+    console.log("          0 - RETORNAR              ")
+    console.log("====================================\n")
+    escolhaPagamento = readline.questionInt("Digite a opção desejada: ");
+    console.clear();
+
+    switch (escolhaPagamento) {
+        case 1:
+            console.log("Adicionar nova forma de pagamento \n");
+            readline.question("pressione enter pra continuar...")
+            console.clear();
+            telaPagamento ();
+            break;
+        case 2:
+            console.log("Alterar forma de pagamento \n");
+            readline.question("pressione enter pra continuar...")
+            console.clear();
+            telaPagamento ();
+            break;
+        case 3:
+            console.log("Excluir forma de pagamento \n");
+            readline.question("pressione enter pra continuar...")
+            console.clear();
+            telaPagamento ();
+            break;
+        case 0:
+            console.log("Retornando a PDV...\n");
+            console.clear();
+            telaPdv ();
+            break;
+        default:
+            console.log("Opção inválida. Por favor, digite uma opção válida.");
+            telaPagamento ();
+            break;
+
+    }
+
+}
+
 function telaCliente() {
+    let escolhaCliente
     
     console.log("====================================")
     console.log("              CLIENTE               ")
@@ -197,9 +318,168 @@ function telaCliente() {
     escolhaCliente = readline.questionInt("Digite a opção desejada: ");
     console.clear();
 
+    switch (escolhaCliente) {
+        case 1:
+            novoCliente ()
+            break;
+        case 2:
+            alteraCliente ()
+            break;
+        case 3:
+            excluirCliente ()
+            break
+        case 0:
+            telaMenu ()
+            break;
+        default:
+            console.log("Opção inválida. Por favor, digite uma opção válida.");
+            telaCliente ()
+            break;
+    }
+}
+
+function novoCliente() {
+
+   let adcCliente = {
+        nome: "",
+        sobrenome: "",
+        cpf: "",
+        endereco: "",
+        contato: 0
+    };
+
+    console.log("====================================")
+    console.log("           NOVO CLIENTE             ")
+    console.log("====================================")
+    adcCliente.nome = readline.question("Qual o nome do cliente? ");
+    adcCliente.sobrenome = readline.question("Qual o sobrenome do cliente? ");
+    adcCliente.cpf = readline.question("Digite o CPF do cliente: ");
+    adcCliente.endereco = readline.question("Digite o endereço do cliente: ");
+    adcCliente.contato = readline.questionInt("Digite o contato do cliente: ");
+    console.log("====================================\n")
+    console.clear();
+
+    console.log("====================================")
+    console.log("Confirme os dados do novo cliente:");
+    console.log("Nome:", adcCliente.nome);
+    console.log("Sobrenome:", adcCliente.sobrenome);
+    console.log("CPF:", adcCliente.cpf);
+    console.log("Endereço:", adcCliente.endereco);
+    console.log("Contato:", adcCliente.contato);
+    console.log("====================================\n")
+
+    let confirmacao = readline.question("Os dados estão corretos? (sim ou não): ");
+    if (confirmacao.toLowerCase() === "sim") {
+        console.log("Novo cliente cadastrado com sucesso!\n");
+        readline.question("pressione pra continuar...")
+        console.clear();
+    } else {
+        console.log("Os dados não foram confirmados. Volte ao menu CLIENTE para fazer alterações.\n");
+    }
 
 }
 
+function alteraCliente() {
 
+    let escolhaAlterar;
+
+    console.log("====================================")
+    console.log("           ALTERAR CLIENTE          ");
+    console.log("====================================")
+    console.log("     1 - PESQUISAR POR NOME         ");
+    console.log("     2 - LISTAR TODOS               ");
+    console.log("     3 - RETORNAR                   ");
+    console.log("====================================\n")
+    escolhaAlterar = readline.questionInt("Digite a opção desejada:");
+    console.clear();
     
-   
+    switch (escolhaAlterar) {
+        case 1:
+            let nomeCliente = readline.question("Digite o nome e sobrenome do cliente: ");
+
+            // Código para pesquisar e exibir informações do cliente
+            // Exibindo informações teste até aprender a fazer essa bagaça!!!
+            console.log("====================================")
+            console.log("          Dados do Cliente:         ");
+            console.log("1 - Nome: Marcelo");
+            console.log("2 - Sobrenome: Cavalcanti");
+            console.log("3 - CPF: 081.727.864-84");
+            console.log("4 - Endereço: Rua tal, numero tal, bairro tal");
+            console.log("5 - Contato: 81 98690-3607");
+            console.log("====================================\n")
+            console.clear();
+            // ...
+            console.log("====================================")
+            console.log("Opções de alteração para o cliente:");
+            console.log("1 - Nome");
+            console.log("2 - Sobrenome");
+            console.log("3 - CPF");
+            console.log("4 - Endereço");
+            console.log("5 - Contato");
+            console.log("====================================")
+            let opcaoAlteracao = readline.questionInt("Digite a opção de alteração desejada: ");
+            console.clear();
+
+            // Código para realizar a alteração no cliente
+            // ...
+            console.log("====================================")
+            console.log("Confirme os dados alterados:    ");
+            // Exibir dados alterados (dá pra grifar o que foi alterado????)
+            console.log("1 - Nome: Marcelo");
+            console.log("2 - Sobrenome: Cavalcanti");
+            console.log("3 - CPF: 081.727.864-84");
+            console.log("4 - Endereço: Rua tal, numero tal, bairro tal");
+            console.log("5 - Contato: 81 98690-3607")
+            console.log("====================================")
+            // ...
+
+            var confirmacaoAlteracao = readline.question("Os dados estão corretos? (sim ou não): ");
+            if (confirmacaoAlteracao.toLowerCase() === "sim") {
+                console.clear();
+
+                console.log("Alteração realizada com sucesso!");
+                alteraCliente ();
+
+            } else {
+                console.log("Os dados não foram confirmados. Volte ao menu inicial do sub menu CLIENTE para fazer alterações.");
+                console.clear();
+                telaCliente ();
+            }
+            break;
+
+        case 2:
+            console.log("====================================")
+            console.log("              LISTA                 ")
+            console.log("==================================== \n")
+            console.log("     NÃO HÁ CLIENTES CADASTRADOS \n ")
+            console.log("====================================\n")
+            readline.question("pressione pra continuar...")
+            console.clear();
+            
+            break;
+
+        case 3:
+            console.log("Retornando ao menu Cliente...");
+            telaCliente ()
+            break;
+        
+        default:
+            console.log("Opção inválida. Por favor, digite uma opção válida.");
+            alteraCliente ();
+            break;
+}
+    
+}
+
+function excluirCliente() {
+
+    console.log("====================================")
+    console.log("               EXCLUIR               ")
+    console.log("==================================== \n")
+    console.log("     NÃO HÁ CLIENTES PARA EXCLUIR \n")
+    console.log("====================================\n")
+    readline.question("pressione pra continuar...")
+    console.clear();
+    
+}
+
