@@ -8,6 +8,7 @@ let senha;
 
 let produto1 = {
     nome: "Coelho Sansão",
+    id: "01",
     categoria: "Personagens",
     tamanho: "30cm",
     valor: "70.00",
@@ -15,6 +16,7 @@ let produto1 = {
 
 let produto2 = {
     nome: "Astronauta",
+    id: "02",
     categoria: "Profissões",
     tamanho: "25cm",
     valor: "130.00",
@@ -114,6 +116,7 @@ function cadastroProduto() {
     console.log("           NOVO PRODUTO             ");
     console.log("====================================\n");
     let nomeProduto = readline.question("Qual o nome do produto? ");
+    let idProduto = readline.question("Qual o id do produto? ");
     let categoriaProduto = readline.question("Qual a categoria do produto? ");
     let tamanhoProduto = readline.question("Digite o tamanho do produto: ");
     let valorProduto = readline.question("Digite o valor do produto: ");
@@ -122,6 +125,7 @@ function cadastroProduto() {
 
     let novoProduto = {
         nome: nomeProduto,
+        id: idProduto,
         categoria: categoriaProduto,
         tamanho: tamanhoProduto,
         valor: valorProduto,
@@ -175,6 +179,29 @@ function alteraProduto() {
             break;
     }
     console.clear();
+}
+
+function excluiProduto() {
+    console.log("====================================")
+    console.log("           EXCLUIR PRODUTO          ")
+    console.log("====================================")
+    console.log("     NÃO HÁ PRODUTOS PARA EXCLUIR \n")
+    console.log("====================================\n")
+    readline.question("pressione pra continuar...")
+    console.clear();
+    telaProduto();
+}
+
+function estoque() {
+    console.log("====================================")
+    console.log("              ESTOQUE               ")
+    console.log("====================================")
+    console.log( produtos)
+    console.log("====================================\n")
+    readline.question("pressione pra continuar...")
+    console.clear();
+    telaProduto ();
+    
 }
 
 function telaPdv() {
