@@ -129,8 +129,8 @@ function cadastroProduto() {
 
     produtos.push(novoProduto);
 
-    console.log("Novo produto cadastrado com sucesso!\n");
-    readline.question("Produto criado com sucesso! Pressione ENTER para continuar");
+    console.log("Novo produto cadastrado com sucesso!");
+    readline.question("Pressione ENTER para continuar");
     console.clear();
     telaProduto();
 }
