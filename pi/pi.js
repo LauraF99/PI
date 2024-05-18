@@ -1,5 +1,5 @@
 /* Sistema de Cadastro de clientes */
-const readline = require("readline-sync");
+/*const readline = require("readline-sync");
 
 var op;
 var nome = "";
@@ -57,4 +57,30 @@ do {
       console.log("Opção inválida.");
       readline.question("Pressione ENTER para continuar...");
   }
-} while (op !== 0);
+} while (op !== 0); */
+
+produtos = [];
+
+let readline = require("readline-sync")
+let novoProduto = {
+  nome: "",
+  categoria: "",
+  tamanho: "",
+  valor: ""
+};
+
+console.log("====================================")
+console.log("           NOVO PRODUTO             ")
+console.log("====================================")
+novoProduto.nome = readline.question("Qual o nome do produto? ");
+novoProduto.categoria = readline.question("Qual a categoria do produto? ");
+novoProduto.tamanho = readline.question("Digite o tamanho do produto: ");
+novoProduto.valor = readline.question("Digite o preço do produto: ");
+console.log("====================================\n")
+
+console.log(novoProduto);
+
+
+produtos.push(novoProduto);
+
+console.log(produtos);

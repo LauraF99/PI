@@ -101,29 +101,46 @@ switch (escolhaProduto) {
             }
         }
 
+let produto1 = {
+    nome: "Coelho Sansão",
+    categoria: "Personagens",
+    tamanho: "30cm",
+    valor: "70.00",
+
+}
+
+let produto2 = {
+    nome: "Astronauta",
+    categoria: "Profissões",
+    tamanho: "25cm",
+    valor: "130.00",
+}
+let produtos = [produto1, produto2]
+
     function cadastroProduto() {
-                
-        let novoProduto = {
-            nome: "",
-            categoria: "",
-            tamanho: "",
-            preço: "" }
-    
-    
+                   
     console.log("====================================")
     console.log("           NOVO PRODUTO             ")
     console.log("====================================\n")
-    novoProduto.nome = readline.question("Qual o nome do produto? ");
-    novoProduto.categoria = readline.question("Qual a categoria do produto? ");
-    novoProduto.tamanho = readline.question("Digite o tamanho do produto: ");
-    novoProduto.preço = readline.question("Digite o preço do produto: ");
+    let nomeProduto = readline.question("Qual o nome do produto? ");
+    let categoriaProduto = readline.question("Qual a categoria do produto? ");
+    let tamanhoProduto = readline.question("Digite o tamanho do produto: ");
+    let valorProduto = readline.question("Digite o valor do produto: ");
     console.log("====================================\n")
     console.clear();
-    
+
+    let novoProduto = {
+        nome: nomeProduto,
+        categoria: categoriaProduto,
+        tamanho: tamanhoProduto,
+        valor: valorProduto,
+      };
+
+    produtos.push(novoProduto)
     console.log("Novo produto cadastrado com sucesso!\n");
-    telaProduto ();
-    console.clear();
+    readline.question("Produto criado com sucesso! Pressione ENTER para continuar")
 }
+    telaProduto ();
    
 
 function alteraProduto() {
