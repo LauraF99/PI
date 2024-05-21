@@ -291,10 +291,12 @@ function telaPedidos() {
         console.log("Novo pedido cadastrado com sucesso!\n");
         readline.question("Pressione ENTER para continuar...");
         console.clear();
+        telaPdv();
     } else {
         console.log("Os dados não foram confirmados. Volte ao menu CLIENTE para fazer alterações.\n");
     }
     console.clear();
+    telaPdv();
 }
 
 function telaHistorico() {
@@ -305,6 +307,7 @@ function telaHistorico() {
     console.log("====================================\n");
     readline.question("Pressione ENTER para continuar...");
     console.clear();
+    telaPdv();
 }
 
 function telaPagamento() {
@@ -521,4 +524,5 @@ function excluirCliente() {
     console.log("====================================\n");
     readline.question("Pressione ENTER para continuar...");
     console.clear();
+    telaCliente();
 }
