@@ -24,6 +24,26 @@ let produto2 = {
 
 let produtos = [produto1, produto2];
 
+let cliente1 = {
+    nome: "Marcelo",
+    sobrenome: "Cavalcanti",
+    cpf: "115.585.024-58",
+    endereco: "Avenida Caxangá",
+    contato: 81995662312
+}
+
+let cliente2 = {
+    nome: "Laura",
+    sobrenome: "Ferreira",
+    cpf: "110.925.334-55",
+    endereco: "Avenida Chagas Ferreira",
+    contato: 81996069031
+}
+
+let clientes = [cliente1, cliente2]
+
+
+
 function entrada() {
     console.log("====================================");
     console.log("               ENTRAR               ");
@@ -196,7 +216,9 @@ function estoque() {
     console.log("====================================")
     console.log("              ESTOQUE               ")
     console.log("====================================")
-    console.log( produtos)
+    for(let i in produtos){
+        console.log(produtos[i].nome)
+    }
     console.log("====================================\n")
     readline.question("pressione pra continuar...")
     console.clear();
@@ -396,8 +418,10 @@ function novoCliente() {
     let confirmacao = readline.question("Os dados estão corretos? (sim ou não): ");
     if (confirmacao.toLowerCase() === "sim") {
         console.log("Novo cliente cadastrado com sucesso!\n");
+        clientes.push(adcCliente);
         readline.question("Pressione ENTER para continuar...");
         console.clear();
+        telaCliente();
     } else {
         console.log("Os dados não foram confirmados. Volte ao menu CLIENTE para fazer alterações.\n");
     }
@@ -468,10 +492,13 @@ function alteraCliente() {
             console.log("====================================");
             console.log("              LISTA                 ");
             console.log("==================================== \n");
-            console.log("     NÃO HÁ CLIENTES CADASTRADOS \n ");
+            for(let i in clientes){
+                console.log(clientes[i].nome)
+            }
             console.log("====================================\n");
             readline.question("Pressione ENTER para continuar...");
             console.clear();
+            telaCliente();
             break;
 
         case 3:
