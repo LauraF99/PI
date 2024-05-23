@@ -8,7 +8,7 @@ let senha;
 
 let produto1 = {
     nome: "Coelho Sansão",
-    id: "01",
+    id: "1",
     categoria: "Personagens",
     tamanho: "30cm",
     valor: "70.00",
@@ -16,7 +16,7 @@ let produto1 = {
 
 let produto2 = {
     nome: "Astronauta",
-    id: "02",
+    id: "2",
     categoria: "Profissões",
     tamanho: "25cm",
     valor: "130.00",
@@ -168,39 +168,49 @@ function alteraProduto() {
     console.log("====================================");
     console.log("           ALTERAR PRODUTO          ");
     console.log("====================================\n");
-    console.log("      1 - Astronauta                ");
-    console.log("      2 - Quantidade em estoque: 1  ");
-    console.log("      3 - Valor: 130,00             ");
+    for(let i in produtos){
+        console.log(produtos[i].id, produtos[i].nome);
+    }
     console.log("      0 - Voltar                    \n");
     console.log("====================================\n");
-    altera = readline.questionInt("Escolha uma opção: ");
+    altera = readline.questionInt("Escolha o id do produto: ");
     console.clear();
 
-    switch (altera) {
-        case 1:
-            readline.question("Informe o novo nome do protudo: ");
-            readline.question("Nome alterado com sucesso! Pressione para continuar");
-            alteraProduto();
-            break;
-        case 2:
-            readline.questionInt("Informe a quantidade disponível em estoque: ");
-            readline.question("Estoque alterado com sucesso! Pressione ENTER para continuar");
-            alteraProduto();
-            break;
-        case 3:
-            readline.questionFloat("Informe o novo preço do produto: ");
-            readline.question("Preço alterado com sucesso! Pressione ENTER para continuar");
-            alteraProduto();
-            break;
-        case 0:
-            telaProduto();
-            break;
-        default:
-            readline.question("Opção inválida! Pressione ENTER para continuar");
-            alteraProduto();
-            break;
+    for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].id == altera) {
+            console.log("====================================");
+            console.log("           ALTERAR PRODUTO          ");
+            console.log("====================================\n");
+            console.log(`\tId: ${produtos[i].id}\n\tProduto: ${produtos[i].nome}\n\tCategoria: ${produtos[i].categoria}\n\tTamanho: ${produtos[i].tamanho}\n\tValor: ${produtos[i].valor}\n`);
+            console.log("====================================\n"); 
+            console.log("Pressione ENTER se não deseja alterar");
+            
+            let altNome = readline.question("Nome: ")
+            if (altNome != "") {
+                produtos[i].nome = altNome
+            }
+            
+            let altCategoria= readline.question("Categoria: ")
+            if (altCategoria != "") {
+                produtos[i].categoria = altCategoria
+            }
+            
+            let altTamanho = readline.question("Tamanho: ")
+            if (altTamanho!= "") {
+                produtos[i].tamanho = altTamanho
+            }
+            
+            let altValor = readline.question("Valor: ")
+            if (altValor != "") {
+                produtos[i].valor = altValor
+            }
+        }
     }
-    console.clear();
+    
+console.log("Produto Alterado com sucesso!");
+readline.question("Pressione para continuar");
+console.clear();
+telaProduto();
 }
 
 function excluiProduto() {
