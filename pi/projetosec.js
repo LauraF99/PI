@@ -528,8 +528,25 @@ function excluirCliente() {
     for(let i in clientes){
         console.log(clientes[i].id, clientes[i].nome);
     }
+    console.log("       0 - Voltar");
     console.log("====================================\n");
-    readline.question("Selecione o ID do cliente: ");
+    let excluiId = readline.question("Selecione o ID do cliente: ");
     console.clear();
-    telaCliente();
+
+    for (let i = 0; i < clientes.length; i++) {
+        if (clientes[i].id == excluiId) {
+            clientes.splice(i,1)
+            console.log("cliente excluido com sucesso")
+            readline.question("pressione ENTER para continuar")
+            console.clear();
+            telaCliente();
+          
+        } else if (excluiId == 0) {
+            telaCliente();
+        } else {
+            excluirCliente();
+        }
+    }
+    
 }
+
