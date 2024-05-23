@@ -520,9 +520,11 @@ function excluirCliente() {
     console.log("====================================");
     console.log("               EXCLUIR               ");
     console.log("==================================== \n");
-    console.log("     NÃO HÁ CLIENTES PARA EXCLUIR \n");
+    for (let i = 0; i < clientes.length; i++) {
+        console.log(` #${clientes[i].id}\t${clientes[i].nome}`);
+    }
     console.log("====================================\n");
-    readline.question("Pressione ENTER para continuar...");
+    readline.question("Selecione o ID do cliente: ");
     console.clear();
     telaCliente();
 }
