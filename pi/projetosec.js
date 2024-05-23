@@ -27,6 +27,7 @@ let produtos = [produto1, produto2];
 let cliente1 = {
     nome: "Marcelo",
     sobrenome: "Cavalcanti",
+    id: "1",
     cpf: "115.585.024-58",
     endereco: "Avenida Caxangá",
     contato: 81995662312
@@ -35,6 +36,7 @@ let cliente1 = {
 let cliente2 = {
     nome: "Laura",
     sobrenome: "Ferreira",
+    id: "2",
     cpf: "110.925.334-55",
     endereco: "Avenida Chagas Ferreira",
     contato: 81996069031
@@ -217,7 +219,7 @@ function estoque() {
     console.log("              ESTOQUE               ")
     console.log("====================================")
     for(let i in produtos){
-        console.log(produtos[i].nome)
+        console.log(produtos[i].id, produtos[i].nome)
     }
     console.log("====================================\n")
     readline.question("pressione pra continuar...")
@@ -393,6 +395,7 @@ function novoCliente() {
     let adcCliente = {
         nome: "",
         sobrenome: "",
+        id: "",
         cpf: "",
         endereco: "",
         contato: 0
@@ -403,6 +406,7 @@ function novoCliente() {
     console.log("====================================");
     adcCliente.nome = readline.question("Qual o nome do cliente? ");
     adcCliente.sobrenome = readline.question("Qual o sobrenome do cliente? ");
+    adcCliente.id = readline.question("Digite o id: ")
     adcCliente.cpf = readline.question("Digite o CPF do cliente: ");
     adcCliente.endereco = readline.question("Digite o endereço do cliente: ");
     adcCliente.contato = readline.questionInt("Digite o contato do cliente: ");
@@ -413,6 +417,7 @@ function novoCliente() {
     console.log("Confirme os dados do novo cliente:");
     console.log("Nome:", adcCliente.nome);
     console.log("Sobrenome:", adcCliente.sobrenome);
+    console.log("id:", adcCliente.id);
     console.log("CPF:", adcCliente.cpf);
     console.log("Endereço:", adcCliente.endereco);
     console.log("Contato:", adcCliente.contato);
@@ -496,7 +501,7 @@ function alteraCliente() {
             console.log("              LISTA                 ");
             console.log("==================================== \n");
             for(let i in clientes){
-                console.log(clientes[i].nome)
+                console.log(clientes[i].id, clientes[i].nome)
             }
             console.log("====================================\n");
             readline.question("Pressione ENTER para continuar...");
@@ -520,8 +525,8 @@ function excluirCliente() {
     console.log("====================================");
     console.log("               EXCLUIR               ");
     console.log("==================================== \n");
-    for (let i = 0; i < clientes.length; i++) {
-        console.log(` #${clientes[i].id}\t${clientes[i].nome}`);
+    for(let i in clientes){
+        console.log(clientes[i].id, clientes[i].nome);
     }
     console.log("====================================\n");
     readline.question("Selecione o ID do cliente: ");
