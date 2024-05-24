@@ -44,7 +44,15 @@ let cliente2 = {
 
 let clientes = [cliente1, cliente2]
 
+let pedido1 = {
+    cliente: "Marcelo",
+    tamanho: "30",
+    quantidade: 2,
+    valor: 140,
+    pagamento: "crédito",
+}
 
+let pedidos = [pedido1]
 
 function entrada() {
     console.log("====================================");
@@ -61,7 +69,6 @@ do {
 } while (senha !== senhaok || login !== loginok);
 
 function telaMenu() {
-    let escolha;
 
     console.log("====================================");
     console.log("                MENU                ");
@@ -71,7 +78,7 @@ function telaMenu() {
     console.log("          3 - CLIENTE               ");
     console.log("          0 - SAIR                  ");
     console.log("====================================\n");
-    escolha = readline.questionInt("Digite a opção desejada: ");
+    let escolha = readline.questionInt("Digite a opção desejada: ");
     console.clear();
 
     switch (escolha) {
@@ -96,8 +103,7 @@ function telaMenu() {
 telaMenu();
 
 function telaProduto() {
-    let escolhaProduto;
-
+    
     console.log("====================================");
     console.log("              PRODUTO               ");
     console.log("====================================\n");
@@ -107,7 +113,7 @@ function telaProduto() {
     console.log("           4 - ESTOQUE              ");
     console.log("           0 - INÍCIO               ");
     console.log("====================================\n");
-    escolhaProduto = readline.questionInt("Digite a opção desejada: ");
+    let escolhaProduto = readline.questionInt("Digite a opção desejada: ");
     console.clear();
 
     switch (escolhaProduto) {
@@ -207,7 +213,7 @@ function alteraProduto() {
         }
     }
     
-console.log("Produto Alterado com sucesso!");
+console.log("\nProduto Alterado com sucesso!");
 readline.question("Pressione para continuar");
 console.clear();
 telaProduto();
@@ -217,11 +223,29 @@ function excluiProduto() {
     console.log("====================================")
     console.log("           EXCLUIR PRODUTO          ")
     console.log("====================================")
-    console.log("     NÃO HÁ PRODUTOS PARA EXCLUIR \n")
+    for(let i in produtos){
+        console.log(produtos[i].id, produtos[i].nome);
+    }
+    console.log("       0 - Voltar");
     console.log("====================================\n")
-    readline.question("pressione pra continuar...")
+    let excluiProd = readline.question("Selecione o ID do produto: ");
     console.clear();
-    telaProduto();
+
+    for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].id == excluiProd) {
+            produtos.splice(i,1)
+            console.log("Produto excluido com sucesso")
+            readline.question("pressione ENTER para continuar")
+            console.clear();
+            telaProduto();
+          
+        } else if (excluiProd == 0) {
+            telaProduto();
+        } else {
+            excluiProduto();
+        }
+    }
+
 }
 
 function estoque() {
@@ -239,8 +263,7 @@ function estoque() {
 }
 
 function telaPdv() {
-    let escolhaPDV;
-
+    
     console.log("====================================");
     console.log("                PDV                 ");
     console.log("====================================");
@@ -249,7 +272,7 @@ function telaPdv() {
     console.log("          3 - PAGAMENTO             ");
     console.log("          0 - INÍCIO                ");
     console.log("====================================\n");
-    escolhaPDV = readline.questionInt("Digite a opção desejada: ");
+    let escolhaPDV = readline.questionInt("Digite a opção desejada: ");
     console.clear();
 
     switch (escolhaPDV) {
@@ -259,9 +282,9 @@ function telaPdv() {
         case 2:
             telaHistorico();
             break;
-        case 3:
+        /*case 3:
             telaPagamento();
-            break;
+            break;*/
         case 0:
             telaMenu();
             break;
@@ -273,34 +296,44 @@ function telaPdv() {
 }
 
 function telaPedidos() {
+    let novoPedido = {
+        nome: "",
+        id: "",
+        tamanho: "",
+        quantidade: "",
+        valor: "",
+        pagamento: "",
+    }
+
     console.log("====================================");
     console.log("              PEDIDOS              ");
     console.log("==================================== \n");
-    const pedidoCliente = readline.question("Nome do cliente: ");
-    const idProduto = readline.questionInt("ID do produto: ");
-    const tamanhoProduto = readline.questionInt("Tamanho do produto: ");
-    const quantidadeProduto = readline.questionInt("Quantidade do produto: ");
-    const valorProduto = readline.questionFloat("Preço do produto: R$");
+    novoPedido.nome= readline.question("Nome do cliente: ");
+    novoPedido.id = readline.question("ID do produto: ");
+    novoPedido.tamanho = readline.question("Tamanho do produto: ");
+    novoPedido.quantidade = readline.questionInt("Quantidade do produto: ");
+    novoPedido.valor = readline.questionInt("Preço do produto: R$");
     console.log("====================================\n");
 
-    let totalPedido = quantidadeProduto * valorProduto;
-    console.log("valor total: R$" + totalPedido);
-    const formaPagamento = readline.question("Qual a forma de pagamento: ");
+    let totalPedido = novoPedido.quantidade * novoPedido.valor;
+    console.log(`valor total: R$ ${totalPedido}`);
+    novoPedido.pagamento = readline.question("Qual a forma de pagamento: ");
     console.log("====================================\n");
 
     console.log("====================================");
     console.log("Confirme os dados do pedido:");
-    console.log(`cliente: ${pedidoCliente}`);
-    console.log(`ID: ${idProduto}`);
-    console.log(`Tamanho: ${tamanhoProduto} cm`);
-    console.log(`Quantidade: ${quantidadeProduto} unid`);
+    console.log(`cliente: ${novoPedido.nome}`);
+    console.log(`ID do produto: ${novoPedido.id}`);
+    console.log(`Tamanho: ${novoPedido.tamanho}`);
+    console.log(`Quantidade: ${novoPedido.quantidade} unid`);
     console.log(`Valor total: R$ ${totalPedido}`);
-    console.log(`Forma de pagamento: ${formaPagamento}`);
+    console.log(`Forma de pagamento: ${novoPedido.pagamento}`);
     console.log("====================================\n");
 
     let confirmacaoPedido = readline.question("Os dados estão corretos? (sim ou não): ");
     if (confirmacaoPedido.toLowerCase() === "sim") {
         console.log("Novo pedido cadastrado com sucesso!\n");
+        pedidos.push(novoPedido);
         readline.question("Pressione ENTER para continuar...");
         console.clear();
         telaPdv();
@@ -315,14 +348,16 @@ function telaHistorico() {
     console.log("====================================");
     console.log("              HISTÓRICO             ");
     console.log("==================================== \n");
-    console.log("     NÃO HÁ HISTÓRICO DE PEDIDOS \n ");
+    for(let i in pedidos){
+        console.log(pedidos[i].cliente, pedidos[i].id, pedidos[i].valor)
+    }
     console.log("====================================\n");
     readline.question("Pressione ENTER para continuar...");
     console.clear();
     telaPdv();
 }
 
-function telaPagamento() {
+/*function telaPagamento() {
     let escolhaPagamento;
 
     console.log("====================================");
@@ -365,7 +400,7 @@ function telaPagamento() {
             telaPagamento();
             break;
     }
-}
+} */
 
 function telaCliente() {
     let escolhaCliente;
