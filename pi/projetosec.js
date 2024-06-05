@@ -267,10 +267,11 @@ function telaPdv() {
     console.log("====================================");
     console.log("                PDV                 ");
     console.log("====================================");
-    console.log("          1 - PEDIDOS               ");
-    console.log("          2 - HISTÓRICO             ");
-    console.log("          3 - PAGAMENTO             ");
-    console.log("          0 - INÍCIO                ");
+    console.log("         1 - PEDIDOS                ");
+    console.log("         2 - HISTÓRICO              ");
+    console.log("         3 - STATUS DO PEDIDO       ");
+    console.log("         4 - RELATÓRIO DE VENDAS    ");
+    console.log("         0 - INÍCIO                 ");
     console.log("====================================\n");
     let escolhaPDV = readline.questionInt("Digite a opção desejada: ");
     console.clear();
@@ -282,9 +283,11 @@ function telaPdv() {
         case 2:
             telaHistorico();
             break;
-        /*case 3:
-            telaPagamento();
-            break;*/
+        case 3:
+            telaStatus();
+            break;
+        case 4:
+            telaRelatorio();
         case 0:
             telaMenu();
             break;
@@ -356,51 +359,29 @@ function telaHistorico() {
     console.clear();
     telaPdv();
 }
-
-/*function telaPagamento() {
-    let escolhaPagamento;
-
+function telaRelatorio() {
     console.log("====================================");
-    console.log("              PAGAMENTO             ");
+    console.log("         RELATÓRIO DE VENDAS       ");
     console.log("==================================== \n");
-    console.log("          1 - NOVO                  ");
-    console.log("          2 - ALTERAR               ");
-    console.log("          3 - EXCLUIR               ");
-    console.log("          0 - RETORNAR              ");
-    console.log("====================================\n");
-    escolhaPagamento = readline.questionInt("Digite a opção desejada: ");
-    console.clear();
+    let totalVendas = 0;
+    let quantidadeTotal = 0;
 
-    switch (escolhaPagamento) {
-        case 1:
-            console.log("Adicionar nova forma de pagamento \n");
-            readline.question("Pressione ENTER para continuar...");
-            console.clear();
-            telaPagamento();
-            break;
-        case 2:
-            console.log("Alterar forma de pagamento \n");
-            readline.question("Pressione ENTER para continuar...");
-            console.clear();
-            telaPagamento();
-            break;
-        case 3:
-            console.log("Excluir forma de pagamento \n");
-            readline.question("Pressione ENTER para continuar...");
-            console.clear();
-            telaPagamento();
-            break;
-        case 0:
-            console.log("Retornando a PDV...\n");
-            console.clear();
-            telaPdv();
-            break;
-        default:
-            console.log("Opção inválida. Por favor, digite uma opção válida.");
-            telaPagamento();
-            break;
-    }
-} */
+    pedidos.forEach(pedido => {
+        let valorPedido = pedido.quantidade * pedido.valor;
+        totalVendas += valorPedido;
+        quantidadeTotal += pedido.quantidade;
+        console.log(`Cliente: ${pedido.cliente}, Produto ID: ${pedido.id}, Tamanho: ${pedido.tamanho}, Quantidade: ${pedido.quantidade}, Valor Unitário: R$${pedido.valor}, Valor Total: R$${valorPedido}, Forma de Pagamento: ${pedido.pagamento}`);
+    });
+
+    console.log("\n====================================");
+    console.log(`Total de Vendas: R$ ${totalVendas}`);
+    console.log(`Total de Itens Vendidos: ${quantidadeTotal}`);
+    console.log("====================================\n");
+
+    readline.question("Pressione ENTER para continuar...");
+    console.clear();
+    telaPdv();
+}
 
 function telaCliente() {
     let escolhaCliente;
