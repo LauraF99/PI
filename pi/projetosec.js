@@ -495,103 +495,119 @@ function alteraCliente() {
 
     switch (escolhaAlterar) {
         case 1:
-            let nomeCliente = readline.question("Digite o nome e sobrenome do cliente: ");
-
-            // Código para pesquisar e exibir informações do cliente
-            console.log("====================================");
-            console.log("          Dados do Cliente:         ");
-            console.log("1 - Nome: Marcelo");
-            console.log("2 - Sobrenome: Cavalcanti");
-            console.log("3 - CPF: 081.727.864-84");
-            console.log("4 - Endereço: Rua tal, numero tal, bairro tal");
-            console.log("5 - Contato: 81 98690-3607");
-            console.log("====================================\n");
-            console.clear();
-
-            console.log("====================================");
-            console.log("Opções de alteração para o cliente:");
-            console.log("1 - Nome");
-            console.log("2 - Sobrenome");
-            console.log("3 - CPF");
-            console.log("4 - Endereço");
-            console.log("5 - Contato");
-            console.log("====================================");
-            let opcaoAlteracao = readline.questionInt("Digite a opção de alteração desejada: ");
-            console.clear();
-
-            // Código para realizar a alteração no cliente
-            console.log("====================================");
-            console.log("Confirme os dados alterados:");
-            console.log("1 - Nome: Marcelo");
-            console.log("2 - Sobrenome: Cavalcanti");
-            console.log("3 - CPF: 081.727.864-84");
-            console.log("4 - Endereço: Rua tal, numero tal, bairro tal");
-            console.log("5 - Contato: 81 98690-3607");
-            console.log("====================================");
-
-            var confirmacaoAlteracao = readline.question("Os dados estão corretos? (sim ou não): ");
-            if (confirmacaoAlteracao.toLowerCase() === "sim") {
-                console.clear();
-                console.log("Alteração realizada com sucesso!");
-                alteraCliente();
-            } else {
-                console.log("Os dados não foram confirmados. Volte ao menu inicial do sub menu CLIENTE para fazer alterações.");
-                console.clear();
-                telaCliente();
-            }
+            pesquisaCliente();
             break;
-
         case 2:
-            console.log("====================================");
-            console.log("              LISTA                 ");
-            console.log("==================================== \n");
-            for(let i in clientes){
-                console.log(clientes[i].id, clientes[i].nome)
-            }
-            console.log("====================================\n");
-            readline.question("Pressione ENTER para continuar...");
-            console.clear();
-            telaCliente();
-            break;
-
+            listaCliente();
+            break;            
         case 3:
             console.log("Retornando ao menu Cliente...");
             telaCliente();
             break;
-
+                
         default:
             console.log("Opção inválida. Por favor, digite uma opção válida.");
             alteraCliente();
             break;
     }
-}
+ }
+function pesquisaCliente() {
+    let altera;
 
-function excluirCliente() {
     console.log("====================================");
-    console.log("               EXCLUIR               ");
-    console.log("==================================== \n");
+    console.log("           ALTERAR CLIENTE          ");
+    console.log("====================================\n");
     for(let i in clientes){
         console.log(clientes[i].id, clientes[i].nome);
     }
-    console.log("       0 - Voltar");
+    console.log("      0 - Voltar                    \n");
     console.log("====================================\n");
-    let excluiId = readline.question("Selecione o ID do cliente: ");
+    altera = readline.question("Digite o nome do cliente: ");
     console.clear();
 
     for (let i = 0; i < clientes.length; i++) {
-        if (clientes[i].id == excluiId) {
-            clientes.splice(i,1)
-            console.log("cliente excluido com sucesso")
-            readline.question("pressione ENTER para continuar")
-            console.clear();
-            telaCliente();
-          
-        } else if (excluiId == 0) {
-            telaCliente();
-        } else {
-            excluirCliente();
+        if (clientes[i].nome == altera) {
+            console.log("====================================");
+            console.log("           ALTERAR CLIENTE          ");
+            console.log("====================================\n");
+            console.log(`\tId: ${clientes[i].id}\n\tNome: ${clientes[i].nome}\n\tSobrenome: ${clientes[i].sobrenome}\n\tCPF: ${clientes[i].cpf}\n\tEndereço: ${clientes[i].endereco}\n\tContato: ${clientes[i].contato}\n`);
+            console.log("====================================\n"); 
+            console.log("Pressione ENTER se não deseja alterar");
+            
+            let altNome = readline.question("Nome: ")
+            if (altNome != "") {
+                clientes[i].nome = altNome
+            }
+            
+            let altSobrenome= readline.question("Sobrenome: ")
+            if (altSobrenome != "") {
+                clientes[i].sobrenome = altSobrenome
+            }
+            
+            let altCpf = readline.question("CPF: ")
+            if (altCpf!= "") {
+                clientes[i].cpf = altCpf
+            }
+            
+            let altEndereço = readline.question("Endereço: ")
+            if (altEndereço != "") {
+                clientes[i].endereco = altEndereço
+            }
+
+            let altContato = readline.question("Contato: ")
+            if (altContato != "") {
+                clientes[i].contato = altContato
+            }
         }
     }
     
+console.log("\nCliente Alterado com sucesso!");
+readline.question("Pressione para continuar");
+console.clear();
+telaCliente();
+    
 }
 
+function listaCliente() {
+    
+    console.log("====================================");
+    console.log("              LISTA                 ");
+    console.log("==================================== \n");
+    for(let i in clientes){
+        console.log(clientes[i].id, clientes[i].nome)
+    }
+    console.log("====================================\n");
+    readline.question("Pressione ENTER para continuar...");
+    console.clear();
+    telaCliente();
+    
+}            
+    function excluirCliente() {
+                console.log("====================================");
+                console.log("               EXCLUIR               ");
+                console.log("==================================== \n");
+                for(let i in clientes){
+                    console.log(clientes[i].id, clientes[i].nome);
+                }
+                console.log("       0 - Voltar");
+                console.log("====================================\n");
+                let excluiId = readline.question("Selecione o ID do cliente: ");
+                console.clear();
+                
+                for (let i = 0; i < clientes.length; i++) {
+                    if (clientes[i].id == excluiId) {
+                        clientes.splice(i,1)
+                        console.log("cliente excluido com sucesso")
+                        readline.question("pressione ENTER para continuar")
+                        console.clear();
+                        telaCliente();
+                        
+                    } else if (excluiId == 0) {
+                        telaCliente();
+                    } else {
+                        excluirCliente();
+                    }
+                }
+                
+            }
+            
