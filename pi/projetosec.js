@@ -46,10 +46,13 @@ let clientes = [cliente1, cliente2]
 
 let pedido1 = {
     cliente: "Marcelo",
+    id: "1",
+    idProduto: "1",
     tamanho: "30",
     quantidade: 2,
-    valor: 140,
+    valor: 70,
     pagamento: "crédito",
+    status: "pendente",
 }
 
 let pedidos = [pedido1]
@@ -302,17 +305,20 @@ function telaPedidos() {
     let novoPedido = {
         nome: "",
         id: "",
+        idProduto: "",
         tamanho: "",
         quantidade: "",
         valor: "",
         pagamento: "",
+        status: "",
     }
 
     console.log("====================================");
     console.log("              PEDIDOS              ");
     console.log("==================================== \n");
     novoPedido.nome= readline.question("Nome do cliente: ");
-    novoPedido.id = readline.question("ID do produto: ");
+    novoPedido.id = readline.question("ID do pedido: ");
+    novoPedido.idProduto = readline.question("ID do produto: ");
     novoPedido.tamanho = readline.question("Tamanho do produto: ");
     novoPedido.quantidade = readline.questionInt("Quantidade do produto: ");
     novoPedido.valor = readline.questionInt("Preço do produto: R$");
@@ -327,6 +333,7 @@ function telaPedidos() {
     console.log("Confirme os dados do pedido:");
     console.log(`cliente: ${novoPedido.nome}`);
     console.log(`ID do produto: ${novoPedido.id}`);
+    console.log(`ID do produto: ${novoPedido.idProduto}`);
     console.log(`Tamanho: ${novoPedido.tamanho}`);
     console.log(`Quantidade: ${novoPedido.quantidade} unid`);
     console.log(`Valor total: R$ ${totalPedido}`);
@@ -335,6 +342,7 @@ function telaPedidos() {
 
     let confirmacaoPedido = readline.question("Os dados estão corretos? (sim ou não): ");
     if (confirmacaoPedido.toLowerCase() === "sim") {
+        novoPedido.status = readline.question("Status do pedido (pendente, em andamento, concluído): ");
         console.log("Novo pedido cadastrado com sucesso!\n");
         pedidos.push(novoPedido);
         readline.question("Pressione ENTER para continuar...");
@@ -359,6 +367,31 @@ function telaHistorico() {
     console.clear();
     telaPdv();
 }
+
+function telaStatus() {
+    console.log("====================================");
+    console.log("          STATUS DO PEDIDO          ");
+    console.log("==================================== \n");
+
+    let idPedido = readline.question("Digite o ID do pedido que deseja atualizar: ");
+    let pedido = pedidos.find(p => p.id === idPedido);
+
+    if (pedido) {
+        console.log(`Pedido encontrado: Cliente: ${pedido.cliente}, Pedido ID: ${pedido.id}, Status atual: ${pedido.status}`);
+        let novoStatus = readline.question("Digite o novo status do pedido (pendente, em andamento, concluído): ");
+        pedido.status = novoStatus;
+        console.log("Status do pedido atualizado com sucesso!\n");
+    } else {
+        console.log("Pedido não encontrado.\n");
+        telaStatus();
+    }
+
+    readline.question("Pressione ENTER para continuar...");
+    console.clear();
+    telaPdv();
+
+}
+
 function telaRelatorio() {
     console.log("====================================");
     console.log("         RELATÓRIO DE VENDAS       ");
