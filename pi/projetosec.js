@@ -364,7 +364,7 @@ function telaHistorico() {
     console.log("              HISTÓRICO             ");
     console.log("==================================== \n");
     console.table(pedidos.map(ped => ({
-        Nome: ped.nome,
+        Cliente: ped.cliente,
         ID: ped.id,
         idProduto: ped.idProduto,
         Quantidade: ped.quantidade,
