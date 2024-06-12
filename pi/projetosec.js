@@ -409,9 +409,9 @@ function telaRelatorio() {
 
     pedidos.forEach(pedido => {
         let valorPedido = pedido.quantidade * pedido.valor;
-        totalVendas += valorPedido;
+        totalVendas += valorPedido;                                                                           
         quantidadeTotal += pedido.quantidade;
-        console.log(`Cliente: ${pedido.cliente}, Produto ID: ${pedido.id}, Tamanho: ${pedido.tamanho}, Quantidade: ${pedido.quantidade}, Valor Unitário: R$${pedido.valor}, Valor Total: R$${valorPedido}, Forma de Pagamento: ${pedido.pagamento}`);
+        console.log(`Cliente: ${pedido.cliente}\n Produto ID: ${pedido.id}\n Tamanho: ${pedido.tamanho}\n Quantidade: ${pedido.quantidade}\n Valor Unitário: R$${pedido.valor}\n Valor Total: R$${valorPedido}\n Forma de Pagamento: ${pedido.pagamento}`);
     });
 
     console.log("\n====================================");
